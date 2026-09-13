@@ -41,4 +41,18 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(response.get("status") instanceof Integer ? (Integer) response.get("status") : 500).body(response);
     }
+    @ExceptionHandler(TransactionExecutionException.class)
+    public ResponseEntity<Map<String, Object>> handleTransactionExecutionException(TransactionExecutionException ex) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.UNPROCESSABLE_ENTITY.value());
+        response.put("error", "Transaction Execution Failed");
+        response.put("message", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
+    }
+    public static class TransactionExecutionException extends RuntimeException {
+        public TransactionExecutionException(String message) {
+            super(message);
+        }
+    }
 }

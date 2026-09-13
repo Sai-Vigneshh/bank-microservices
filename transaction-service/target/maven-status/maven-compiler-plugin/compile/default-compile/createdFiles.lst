@@ -1,6 +1,7 @@
 com\bank\transaction\dto\TransactionResponse.class
 com\bank\transaction\service\TransactionService.class
 com\bank\transaction\entity\Transaction$TransactionBuilder.class
+com\bank\transaction\exception\GlobalExceptionHandler$TransactionExecutionException.class
 com\bank\transaction\client\AccountClient.class
 com\bank\transaction\dto\UpdateBalanceRequest$UpdateBalanceRequestBuilder.class
 com\bank\transaction\repository\TransactionRepository.class
